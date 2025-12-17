@@ -48,4 +48,4 @@ Em vez de deixar o modelo "adivinhar", implementei funções Python específicas
 
 # Conclusão
 
-O **projeto** demonstra que a verdadeira potência da IA na segurança não vem apenas do tamanho do modelo, mas da arquitetura que o suporta. Ao combinar a capacidade de raciocínio do **Mistral-Nemo** com ferramentas determinísticas e uma infraestrutura segura, criamos um assistente que potencializa a capacidade humana de análise sem comprometer a privacidade dos dados.
+O **projeto** demonstra que a verdadeira potência das LLMs na segurança não vem apenas do tamanho do modelo, mas da arquitetura. Ao combinar a capacidade de raciocínio do **Mistral-Nemo** com ferramentas determinísticas, criamos um assistente que potencializa a capacidade humana de análise sem comprometer a privacidade dos dados.
