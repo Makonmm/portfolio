@@ -282,9 +282,9 @@ const ProjectCard = ({ project, index, isGuiMode }) => (
           <span key={tag} className="text-[10px] text-gray-500 before:content-['#'] group-hover:text-cyber-primary transition-colors">{tag}</span>
         ))}
       </div>
-       <button className={`mt-auto w-full py-2 border border-cyber-secondary/20 text-xs text-gray-400 hover:bg-cyber-accent hover:text-white hover:border-transparent transition-all uppercase tracking-widest flex justify-center items-center gap-2 ${!isGuiMode && 'group-hover:animate-pulse'}`}>
+       {/* <button className={`mt-auto w-full py-2 border border-cyber-secondary/20 text-xs text-gray-400 hover:bg-cyber-accent hover:text-white hover:border-transparent transition-all uppercase tracking-widest flex justify-center items-center gap-2 ${!isGuiMode && 'group-hover:animate-pulse'}`}>
           <FiTerminal /> Deploy_View
-       </button>
+       </button> */}
     </motion.div>
 );
 
