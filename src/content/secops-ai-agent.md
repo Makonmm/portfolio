@@ -42,10 +42,11 @@ O sistema opera através de um pipeline de roteamento semântico:
 O backend foi construído em **Python** com **FastAPI**, com foco em eficiência.
 
 ### Ferramentas Especializadas
-Em vez de deixar o modelo "adivinhar", implementei funções Python específicas que o agente pode invocar. Por exemplo, a ferramenta de **Threat Intelligence** não faz uma busca genérica no Google. Ela utiliza APIs de busca profunda para varrer repositórios de exploits, bases de dados de vulnerabilidades (NVD/Mitre) e fóruns técnicos, filtrando ruído e entregando apenas inteligência de alta fidelidade para o modelo processar.
+Em vez de deixar o modelo "adivinhar", implementei funções Python específicas (tools) que o agente pode invocar. Por exemplo, a ferramenta de **Threat Intelligence** não faz uma busca genérica no Google. Ela utiliza APIs de busca profunda para varrer repositórios de exploits, bases de dados de vulnerabilidades (NVD/Mitre) e fóruns técnicos, filtrando ruído e entregando apenas inteligência de alta fidelidade para o modelo processar.
 
 ---
 
 # Conclusão
 
-O **projeto** demonstra que a verdadeira potência das LLMs na segurança não vem apenas do tamanho do modelo, mas da arquitetura. Ao combinar a capacidade de raciocínio do **Mistral-Nemo** com ferramentas determinísticas, criamos um assistente que potencializa a capacidade humana de análise sem comprometer a privacidade dos dados.
+O **projeto** demonstra que a verdadeira potência das LLMs na segurança não vem apenas do tamanho do modelo, mas da arquitetura. 
+Ao combinar a capacidade de raciocínio do **Mistral-Nemo** com ferramentas determinísticas, criamos um assistente que potencializa a capacidade humana de análise sem comprometer a privacidade dos dados.
