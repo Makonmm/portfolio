@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-r
 import { motion, AnimatePresence } from 'framer-motion';
 
 import ReactMarkdown from 'react-markdown';
+import Giscus from '@giscus/react';
 import matter from 'gray-matter';
 import { Buffer } from 'buffer';
 import remarkMath from 'remark-math';
@@ -186,29 +187,40 @@ const SOCIAL_LINKS = [
 ];
 
 const useMarkdownPosts = () => {
-    const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-    useEffect(() => {
-        const loadPosts = async () => {
-            const modules = import.meta.glob('./content/*.md', { query: '?raw', import: 'default' });
-            const loadedPosts = [];
+  useEffect(() => {
+      const loadPosts = async () => {
+          const modules = import.meta.glob('./content/*.md', { query: '?raw', import: 'default' });
+          const loadedPosts = [];
 
-            for (const path in modules) {
-                const rawText = await modules[path]();
-                const { data, content } = matter(rawText);
-                loadedPosts.push({
-                    ...data,
-                    content: content,
-                    slug: path.split('/').pop().replace('.md', ''),
-                    id: data.id || path.split('/').pop().replace('.md', '')
-                });
-            }
-            setPosts(loadedPosts.sort((a, b) => new Date(b.date) - new Date(a.date)));
-        };
-        loadPosts();
-    }, []);
+          for (const path in modules) {
+              const rawText = await modules[path]();
+              const { data, content } = matter(rawText);
+              loadedPosts.push({
+                  ...data,
+                  content: content,
+                  slug: path.split('/').pop().replace('.md', ''),
+                  id: data.id || path.split('/').pop().replace('.md', '')
+              });
+          }
 
-    return posts;
+          setPosts(loadedPosts.sort((a, b) => {
+              const parseDate = (dateStr) => {
+                  if (!dateStr) return new Date(0); 
+                  const [day, month, year] = dateStr.split('/');
+                  return new Date(`${year}-${month}-${day}`);
+              };
+
+              const dateA = parseDate(a.date);
+              const dateB = parseDate(b.date);
+              return dateB - dateA;
+          }));
+      };
+      loadPosts();
+  }, []);
+
+  return posts;
 };
 
 const GlitchText = ({ text, isGuiMode }) => (
