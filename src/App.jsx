@@ -154,29 +154,29 @@ const CERTIFICATES = [
   }
 ];
 
-const EXPERIENCES = [
-  {
-    role: "Cyber Threat Hunter",
-    company: "IPV7 (Freelance)",
-    period: "Abr 2025 - Presente",
-    description: "Atuação especializada em operações de Segurança Ofensiva, com foco primário em Bug Bounty e Pentesting. Condução de testes de intrusão em aplicações web, APIs e infraestruturas de rede para identificar vulnerabilidades críticas (OWASP Top 10). Pesquisa ativa de vetores de ataque, exploração de falhas de lógica de negócio e elaboração de relatórios técnicos com Provas de Conceito (PoC) para mitigação de riscos.",
-    tech: ["Pentest", "Bug Bounty", "Burp Suite", "OWASP", "Vulnerability Research"]
-  },
-  {
-    role: "Desenvolvedor de IA & ML",
-    company: "Freelance",
-    period: "Mar 2024 - Mai 2025",
-    description: "Desenvolvimento end-to-end de soluções de Inteligência Artificial. Criação de Agentes Autônomos, modelos de Visão Computacional e algoritmos de Machine Learning para classificação e predição. Projetos focados em resolver problemas complexos com arquiteturas de Deep Learning modernas.",
-    tech: ["Deep Learning", "Computer Vision", "AI Agents", "Python", "Data Science"]
-  },
-  {
-    role: "Suporte Técnico N1 (Redes)",
-    company: "Ibi - Internet Brasileira Incrível",
-    period: "Out 2022 - Mar 2023",
-    description: "Gestão de infraestrutura de redes ISP. Responsável pelo provisionamento lógico de rotas, configuração avançada de roteadores/CPEs e troubleshooting de protocolos de rede. Garantia da estabilidade do link e suporte técnico especializado na camada de infraestrutura.",
-    tech: ["Network Infrastructure", "Routing Protocols", "ISP Ops", "Troubleshooting", "Hardware Config"]
-  }
-];
+// const EXPERIENCES = [
+//   {
+//     role: "Cyber Threat Hunter",
+//     company: "IPV7 (Freelance)",
+//     period: "Abr 2025 - Presente",
+//     description: "Atuação especializada em operações de Segurança Ofensiva, com foco primário em Bug Bounty e Pentesting. Condução de testes de intrusão em aplicações web, APIs e infraestruturas de rede para identificar vulnerabilidades críticas (OWASP Top 10). Pesquisa ativa de vetores de ataque, exploração de falhas de lógica de negócio e elaboração de relatórios técnicos com Provas de Conceito (PoC) para mitigação de riscos.",
+//     tech: ["Pentest", "Bug Bounty", "Burp Suite", "OWASP", "Vulnerability Research"]
+//   },
+//   {
+//     role: "Desenvolvedor de IA & ML",
+//     company: "Freelance",
+//     period: "Mar 2024 - Mai 2025",
+//     description: "Desenvolvimento end-to-end de soluções de Inteligência Artificial. Criação de Agentes Autônomos, modelos de Visão Computacional e algoritmos de Machine Learning para classificação e predição. Projetos focados em resolver problemas complexos com arquiteturas de Deep Learning modernas.",
+//     tech: ["Deep Learning", "Computer Vision", "AI Agents", "Python", "Data Science"]
+//   },
+//   {
+//     role: "Suporte Técnico N1 (Redes)",
+//     company: "Ibi - Internet Brasileira Incrível",
+//     period: "Out 2022 - Mar 2023",
+//     description: "Gestão de infraestrutura de redes ISP. Responsável pelo provisionamento lógico de rotas, configuração avançada de roteadores/CPEs e troubleshooting de protocolos de rede. Garantia da estabilidade do link e suporte técnico especializado na camada de infraestrutura.",
+//     tech: ["Network Infrastructure", "Routing Protocols", "ISP Ops", "Troubleshooting", "Hardware Config"]
+//   }
+// ];
 
 const SOCIAL_LINKS = [
     { name: "GitHub", url: "https://github.com/Makonmm?tab=repositories", icon: <FiGithub />, label: "Perfil no GitHub", color: "group-hover:text-white" },
@@ -438,7 +438,7 @@ const HomePage = ({ isGuiMode }) => {
                 </motion.div>
             </section>
 
-            <section className="mb-24">
+            {/* <section className="mb-24">
                 <div className="flex items-center justify-between mb-12 border-b border-cyber-secondary/30 pb-2 font-mono">
                     <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                         <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00350000</span>
@@ -459,7 +459,7 @@ const HomePage = ({ isGuiMode }) => {
                         </motion.div>
                     ))}
                 </div>
-            </section>
+            </section> */}
 
             <section className="mb-24">
               <div className="flex items-center justify-between mb-12 border-b border-cyber-secondary/30 pb-4 font-mono">
@@ -614,7 +614,7 @@ const ArticleReader = ({ posts }) => {
                             </span>
                         ))}
                     </div>
-                    <h1 className="text-3xl md:text-5xl font-bold font-mono text-white mb-4 leading-tight">{post.title}</h1>
+                    <h1 className="text-2xl md:text-4xl font-bold font-mono text-white mb-4 leading-tight">{post.title}</h1>
                     <div className="flex items-center gap-2 text-sm text-gray-500 font-mono">
                         <FiCalendar /> {post.date} <span className="mx-2">|</span> <FiUser /> Matheus Henrique
                     </div>
