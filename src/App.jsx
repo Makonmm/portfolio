@@ -757,12 +757,12 @@ function App() {
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 text-cyber-secondary">
                 <FiTerminal className={`inline text-lg ${!isGuiMode && 'animate-pulse'}`} />
-                <span className="opacity-80">root@matheush:~/projects $</span>
+                <span className="opacity-80 hidden md:inline">root@matheush:~/projects $</span>
               </div>
-              <nav className="hidden md:flex gap-4 ml-4 font-bold">
-                  <Link to="/" className="hover:text-cyber-accent transition-colors">[HOME]</Link>
-                  <Link to="/writeups" className="hover:text-cyber-accent transition-colors">[WRITE-UPS]</Link>
-              </nav>
+                  <nav className="flex gap-4 ml-4 font-bold">
+                      <Link to="/" className="hover:text-cyber-accent transition-colors">[HOME]</Link>
+                      <Link to="/writeups" className="hover:text-cyber-accent transition-colors">[WRITE-UPS]</Link>
+                  </nav>
             </div>
 
             <div className="flex gap-6 font-bold items-center text-cyber-secondary">
