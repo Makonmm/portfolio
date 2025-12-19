@@ -100,7 +100,7 @@ const SKILL_CATEGORIES = [
   {
     title: "DEV & CLOUD OPS",
     icon: <FiCode className="text-green-500" />,
-    items: ["Python (Advanced)", "C++", "AWS Cloud", "Docker / Containers", "Linux / Bash Scripting", "SQL / PostgreSQL"]
+    items: ["Python (Advanced)", "C++ (Low Level)", "AWS Cloud", "Docker / Containers", "Linux / Bash Scripting", "SQL / PostgreSQL"]
   }
 ];
 
@@ -226,7 +226,7 @@ const useMarkdownPosts = () => {
 const GlitchText = ({ text, isGuiMode }) => (
   <div className="glitch-wrapper">
     <h1 
-      className={`text-4xl md:text-6xl font-bold mb-6 relative z-10 font-mono ${!isGuiMode ? 'glitch-text' : ''}`} 
+      className={`text-4xl md:text-6xl font-bold mb-6 relative z-10 font-mono break-words ${!isGuiMode ? 'glitch-text' : ''}`} 
       data-text={text}
     >
       {text}
@@ -287,16 +287,13 @@ const ProjectCard = ({ project, index, isGuiMode }) => (
           <span className="text-[10px] border border-cyber-accent/50 text-cyber-accent px-2 py-0.5 rounded bg-cyber-accent/5">{project.type}</span>
           <span className="text-[10px] text-gray-600 font-mono group-hover:text-cyber-primary transition-colors">{project.id}</span>
        </div>
-      <h3 className="text-xl font-bold mb-3 text-gray-100 group-hover:text-cyber-accent transition-colors tracking-tight">{project.title}</h3>
-      <p className="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">{project.description}</p>
+      <h3 className="text-xl font-bold mb-3 text-gray-100 group-hover:text-cyber-accent transition-colors tracking-tight break-words">{project.title}</h3>
+      <p className="text-gray-400 text-sm mb-6 flex-grow leading-relaxed break-words">{project.description}</p>
       <div className="flex flex-wrap gap-2 text-xs font-bold text-cyber-secondary mb-6">
         {project.tags.map(tag => (
           <span key={tag} className="text-[10px] text-gray-500 before:content-['#'] group-hover:text-cyber-primary transition-colors">{tag}</span>
         ))}
       </div>
-       {/* <button className={`mt-auto w-full py-2 border border-cyber-secondary/20 text-xs text-gray-400 hover:bg-cyber-accent hover:text-white hover:border-transparent transition-all uppercase tracking-widest flex justify-center items-center gap-2 ${!isGuiMode && 'group-hover:animate-pulse'}`}>
-          <FiTerminal /> Deploy_View
-       </button> */}
     </motion.div>
 );
 
@@ -366,7 +363,7 @@ const InteractiveTerminal = () => {
       <motion.div 
         initial={{ opacity: 0, y: 50, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        className="fixed bottom-6 right-6 w-full max-w-[400px] h-80 bg-black/95 border border-cyber-secondary/50 p-0 font-mono text-xs text-green-500 shadow-[0_0_20px_rgba(0,0,0,0.8)] z-50 flex flex-col rounded overflow-hidden backdrop-blur-md"
+        className="fixed bottom-4 right-4 left-4 md:left-auto md:right-6 md:bottom-6 md:w-full md:max-w-[400px] h-80 bg-black/95 border border-cyber-secondary/50 p-0 font-mono text-xs text-green-500 shadow-[0_0_20px_rgba(0,0,0,0.8)] z-50 flex flex-col rounded overflow-hidden backdrop-blur-md"
       >
         <div className="flex justify-between items-center bg-gray-900 p-2 border-b border-gray-800">
           <span className="text-gray-400 font-bold flex items-center gap-2"><FiTerminal /> bash -- 80x24</span>
@@ -411,11 +408,13 @@ const HomePage = ({ isGuiMode }) => {
                     </div>
                     <span className="text-cyber-accent text-4xl md:text-6xl font-bold tracking-tighter">{`#<$`}</span>
                 </div>
-                <div className="max-w-2xl mx-auto border-l-2 border-cyber-secondary/50 pl-6 ml-auto mr-auto space-y-3 text-lg text-gray-300 font-mono mt-12 relative text-left">
+                
+                {/* CORREÇÃO: Adicionado break-words e whitespace-pre-wrap para o texto não vazar no mobile */}
+                <div className="max-w-2xl mx-auto border-l-2 border-cyber-secondary/50 pl-6 ml-auto mr-auto space-y-3 text-lg text-gray-300 font-mono mt-12 relative text-left break-words whitespace-pre-wrap">
                     <div className="absolute top-0 left-[-2px] w-[2px] h-1/3 bg-cyber-accent shadow-[0_0_10px_#ff003c]"></div>
-                  <TypingEffect text="> Estudante De Ciência Da Computação | Bug Hunter | Hacker Ético Certificado." delay={0.5} isGuiMode={isGuiMode} />
-                  <TypingEffect text="> Foco em operações Red Team/Blue Team, LLMs e Agentes de IA." delay={2.5} isGuiMode={isGuiMode} />
-                  <TypingEffect text="> Aqui você encontrará informações profissionais/técnicas sobre mim, projetos e artigos." delay={4.5} isGuiMode={isGuiMode} />
+                  <TypingEffect text="> Estudante De Ciência Da Computação | Bug Hunter | Hacker Ético Certificado" delay={0.5} isGuiMode={isGuiMode} />
+                  <TypingEffect text="> Foco em operações Red Team/Blue Team, LLMs/Agentes de IA" delay={2.5} isGuiMode={isGuiMode} />
+                  <TypingEffect text="> Aqui você encontrará informações profissionais/técnicas, projetos e artigos" delay={4.5} isGuiMode={isGuiMode} />
                 </div>
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 6 }} className="mt-12">
                     <a href="https://www.linkedin.com/in/matheus-henrique-ramos-siqueira-890052200/" target="_blank" className="inline-flex items-center gap-2 bg-cyber-secondary/10 border border-cyber-secondary text-cyber-secondary px-8 py-4 hover:bg-cyber-secondary hover:text-black hover:scale-105 transition-all duration-300 group">
@@ -428,7 +427,8 @@ const HomePage = ({ isGuiMode }) => {
             </section>
 
             <section className="mb-24">
-                <div className="flex items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono">
+                {/* CORREÇÃO: Alterado layout para flex-col no mobile para evitar overflow do 'ALL SYSTEMS' */}
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                     <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                         <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00300000</span>
                         <FiUser className="text-cyber-accent" /> cat about_me.txt
@@ -439,7 +439,7 @@ const HomePage = ({ isGuiMode }) => {
                     initial={{ opacity: 0, y: 10 }} 
                     whileInView={{ opacity: 1, y: 0 }} 
                     viewport={{ once: true }} 
-                    className={`border-l-4 border-cyber-accent p-6 md:p-8 font-mono text-gray-300 leading-relaxed group relative overflow-hidden ${isGuiMode ? 'bg-black/90' : 'bg-black/60 shadow-[0_0_15px_rgba(0,0,0,0.5)] backdrop-blur-sm'}`}
+                    className={`border-l-4 border-cyber-accent p-6 md:p-8 font-mono text-gray-300 leading-relaxed group relative overflow-hidden break-words ${isGuiMode ? 'bg-black/90' : 'bg-black/60 shadow-[0_0_15px_rgba(0,0,0,0.5)] backdrop-blur-sm'}`}
                 >
                     <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none"><FiActivity size={100} /></div>
                     <div className="space-y-4"> 
@@ -451,7 +451,7 @@ const HomePage = ({ isGuiMode }) => {
             </section>
 
             {/* <section className="mb-24">
-                <div className="flex items-center justify-between mb-12 border-b border-cyber-secondary/30 pb-2 font-mono">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                     <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                         <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00350000</span>
                         <FiActivity className="text-cyber-accent" /> tail -f career.log
@@ -474,13 +474,13 @@ const HomePage = ({ isGuiMode }) => {
             </section> */}
 
             <section className="mb-24">
-              <div className="flex items-center justify-between mb-12 border-b border-cyber-secondary/30 pb-4 font-mono">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 border-b border-cyber-secondary/30 pb-4 font-mono gap-2 md:gap-0">
                 <h2 className="text-3xl font-bold flex items-center gap-3 text-white">
                   <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00401000</span>
                   <FiActivity className="text-cyber-accent" /> 
                   <span className="text-cyber-primary">./some_projects</span><span className="text-gray-600">.sh</span>
                 </h2>
-                <div className="flex flex-col items-end">
+                <div className="flex flex-col items-end self-end md:self-auto">
                     {!isGuiMode && <span className="text-xs text-cyber-secondary animate-pulse">SCANNING REPOSITORIES...</span>}
                     <span className="text-[10px] text-gray-500">Total Found: {PROJECTS.length}</span>
                 </div>
@@ -493,10 +493,10 @@ const HomePage = ({ isGuiMode }) => {
             </section>
 
             <section className="mb-24">
-               <div className="flex items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono">
+               <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                 <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                   <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00402000</span>
-                  <FiDatabase className="text-cyber-accent" /> ./load_kernel_modules.sh
+                  <FiDatabase className="text-cyber-accent" /> ./kern3l_modul3s.sh
                 </h2>
                 <span className="text-xs text-cyber-secondary">ALL SYSTEMS OPERATIONAL</span>
               </div>
@@ -511,10 +511,10 @@ const HomePage = ({ isGuiMode }) => {
             </section>
 
             <section className="mb-24">
-               <div className="flex items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono">
+               <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                 <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                   <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00403000</span>
-                  <FiAward className="text-cyber-accent" /> ./my_credentials_dump.py
+                  <FiAward className="text-cyber-accent" /> ./my_c3rts.py
                 </h2>
                 <span className="text-xs border border-cyber-secondary/50 px-2 py-1 text-cyber-secondary rounded">UID: 0 (ROOT)</span>
               </div>
@@ -538,7 +538,7 @@ const HomePage = ({ isGuiMode }) => {
             </section>
 
             <section className="mb-12">
-               <div className="flex items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono">
+               <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                 <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                   <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00500000</span>
                   <FiLink className="text-cyber-accent" /> ./my_links.sh
@@ -626,7 +626,7 @@ const ArticleReader = ({ posts }) => {
                             </span>
                         ))}
                     </div>
-                    <h1 className="text-2xl md:text-4xl font-bold font-mono text-white mb-4 leading-tight">{post.title}</h1>
+                    <h1 className="text-2xl md:text-4xl font-bold font-mono text-white mb-4 leading-tight break-words">{post.title}</h1>
                     <div className="flex items-center gap-2 text-sm text-gray-500 font-mono">
                         <FiCalendar /> {post.date} <span className="mx-2">|</span> <FiUser /> Matheus Henrique
                     </div>
@@ -637,20 +637,20 @@ const ArticleReader = ({ posts }) => {
                         remarkPlugins={[remarkMath]}
                         rehypePlugins={[rehypeKatex]}
                         components={{
-                            h1: ({node, ...props}) => <h1 className="text-3xl font-bold font-mono text-cyber-primary mt-12 mb-6 border-l-4 border-cyber-accent pl-4" {...props} />,
-                            h2: ({node, ...props}) => <h2 className="text-2xl font-bold font-mono text-white mt-10 mb-4" {...props} />,
-                            h3: ({node, ...props}) => <h3 className="text-xl font-bold font-mono text-cyber-secondary mt-8 mb-2" {...props} />,
-                            p: ({node, ...props}) => <p className="mb-6 leading-8" {...props} />,
+                            h1: ({node, ...props}) => <h1 className="text-3xl font-bold font-mono text-cyber-primary mt-12 mb-6 border-l-4 border-cyber-accent pl-4 break-words" {...props} />,
+                            h2: ({node, ...props}) => <h2 className="text-2xl font-bold font-mono text-white mt-10 mb-4 break-words" {...props} />,
+                            h3: ({node, ...props}) => <h3 className="text-xl font-bold font-mono text-cyber-secondary mt-8 mb-2 break-words" {...props} />,
+                            p: ({node, ...props}) => <p className="mb-6 leading-8 break-words" {...props} />,
                             ul: ({node, ...props}) => <ul className="list-disc list-inside mb-6 space-y-2 marker:text-cyber-accent pl-4" {...props} />,
                             ol: ({node, ...props}) => <ol className="list-decimal list-inside mb-6 space-y-2 marker:text-cyber-accent pl-4" {...props} />,
                             li: ({node, ...props}) => <li className="ml-2" {...props} />,
-                            blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-600 pl-4 italic text-gray-400 my-8 bg-gray-900/50 p-4 rounded-r" {...props} />,
-                            a: ({node, ...props}) => <a className="text-cyber-accent hover:underline decoration-wavy underline-offset-4 transition-colors" {...props} />,
+                            blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-600 pl-4 italic text-gray-400 my-8 bg-gray-900/50 p-4 rounded-r break-words" {...props} />,
+                            a: ({node, ...props}) => <a className="text-cyber-accent hover:underline decoration-wavy underline-offset-4 transition-colors break-words" {...props} />,
                             code({node, inline, className, children, ...props}) {
                                 const match = /language-(\w+)/.exec(className || '')
                                 return !inline && match ? (
-                                    <div className="my-8 rounded-lg overflow-hidden border border-gray-700 shadow-2xl">
-                                        <div className="bg-gray-800 px-4 py-2 text-xs font-mono text-gray-400 border-b border-gray-700 flex justify-between items-center">
+                                    <div className="my-8 rounded-lg overflow-x-auto border border-gray-700 shadow-2xl">
+                                        <div className="bg-gray-800 px-4 py-2 text-xs font-mono text-gray-400 border-b border-gray-700 flex justify-between items-center min-w-max">
                                             <span className="uppercase font-bold tracking-wider">{match[1]}</span>
                                             <div className="flex gap-2">
                                                 <div className="w-2 h-2 rounded-full bg-red-500"></div>
@@ -669,7 +669,7 @@ const ArticleReader = ({ posts }) => {
                                         </SyntaxHighlighter>
                                     </div>
                                 ) : (
-                                    <code className="bg-gray-800 text-cyber-secondary px-1.5 py-0.5 rounded font-mono text-sm border border-gray-700 mx-1" {...props}>
+                                    <code className="bg-gray-800 text-cyber-secondary px-1.5 py-0.5 rounded font-mono text-sm border border-gray-700 mx-1 break-all" {...props}>
                                         {children}
                                     </code>
                                 )
@@ -740,7 +740,7 @@ function App() {
     );
   }
 
-  const appClassName = "min-h-screen relative flex flex-col bg-cyber-dark text-cyber-primary selection:bg-cyber-accent selection:text-white transition-colors duration-500";
+  const appClassName = "min-h-screen relative flex flex-col bg-cyber-dark text-cyber-primary selection:bg-cyber-accent selection:text-white transition-colors duration-500 overflow-x-hidden";
 
   return (
     <Router>
@@ -754,18 +754,18 @@ function App() {
           )}
 
           <header className="sticky top-0 bg-black/90 backdrop-blur border-b border-cyber-secondary/30 p-2 text-[10px] md:text-xs flex justify-between items-center z-50 font-mono shadow-[0_0_10px_rgba(0,255,65,0.1)]">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 md:gap-4">
               <div className="flex items-center gap-2 text-cyber-secondary">
                 <FiTerminal className={`inline text-lg ${!isGuiMode && 'animate-pulse'}`} />
                 <span className="opacity-80 hidden md:inline">root@matheush:~/projects $</span>
               </div>
-                  <nav className="flex gap-4 ml-4 font-bold">
-                      <Link to="/" className="hover:text-cyber-accent transition-colors">[HOME]</Link>
-                      <Link to="/writeups" className="hover:text-cyber-accent transition-colors">[WRITE-UPS]</Link>
-                  </nav>
+              <nav className="flex gap-2 ml-2 md:gap-4 md:ml-4 font-bold">
+                  <Link to="/" className="hover:text-cyber-accent transition-colors whitespace-nowrap">[HOME]</Link>
+                  <Link to="/writeups" className="hover:text-cyber-accent transition-colors whitespace-nowrap">[WRITE-UPS]</Link>
+              </nav>
             </div>
 
-            <div className="flex gap-6 font-bold items-center text-cyber-secondary">
+            <div className="flex gap-2 md:gap-6 font-bold items-center text-cyber-secondary">
               <div className="hidden md:flex gap-6">
                   <span className="flex items-center gap-2"><FiCpu /> CPU: {metrics.cpu}%</span>
                   <span className="flex items-center gap-2"><FiHardDrive /> RAM: {metrics.ram}GB</span>
@@ -773,7 +773,7 @@ function App() {
               </div>
               <button 
                 onClick={() => setIsGuiMode(!isGuiMode)} 
-                className="border px-2 py-1 rounded hover:bg-cyber-secondary hover:text-black transition-all text-[10px] border-cyber-secondary text-cyber-secondary"
+                className="border px-2 py-1 rounded hover:bg-cyber-secondary hover:text-black transition-all text-[10px] border-cyber-secondary text-cyber-secondary whitespace-nowrap"
               >
                 {isGuiMode ? "[ HACKER_MODE ]" : "[ STATIC_MODE ]"}
               </button>
