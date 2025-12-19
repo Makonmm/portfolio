@@ -100,7 +100,7 @@ const SKILL_CATEGORIES = [
   {
     title: "DEV & CLOUD OPS",
     icon: <FiCode className="text-green-500" />,
-    items: ["Python (Advanced)", "C++ (Low Level)", "AWS Cloud", "Docker / Containers", "Linux / Bash Scripting", "SQL / PostgreSQL"]
+    items: ["Python (Advanced)", "C++", "AWS Cloud", "Docker / Containers", "Linux / Bash Scripting", "SQL / PostgreSQL"]
   }
 ];
 
