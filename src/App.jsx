@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-
 import ReactMarkdown from 'react-markdown';
-import Giscus from '@giscus/react';
 import matter from 'gray-matter';
 import { Buffer } from 'buffer';
 import remarkMath from 'remark-math';
@@ -85,12 +83,12 @@ const SKILL_CATEGORIES = [
   {
     title: "OFFENSIVE SEC (RED TEAM)",
     icon: <FiLock className="text-red-500" />,
-    items: ["Pentesting", "Nmap / Wireshark", "OWASP", "Cryptography", "Metasploit Framework", "Burp Suite"]
+    items: ["Pentesting", "Nmap / Wireshark", "OWASP", "Cryptography", "Metasploit Framework", "Burp Suite", "Social Engineering", "Maldev"]
   },
   {
     title: "DEFENSIVE SEC (BLUE TEAM)",
     icon: <FiShield className="text-blue-500" />,
-    items: ["Threat Intelligence", "SIEM Architecture", "IAM / AWS Security", "Firewall Rules", "Vulnerability Mgmt", "Incident Response"]
+    items: ["Threat Intelligence", "SIEM Architecture", "IAM / AWS Security", "Firewall Rules", "Vulnerability Mgmt", "Incident Response", "VPN Configuration", "Network Firewalls", "Network Infrastructure Management"]
   },
   {
     title: "ARTIFICIAL INTELLIGENCE",
@@ -100,7 +98,7 @@ const SKILL_CATEGORIES = [
   {
     title: "DEV & CLOUD OPS",
     icon: <FiCode className="text-green-500" />,
-    items: ["Python (Advanced)", "C++ (Low Level)", "AWS Cloud", "Docker / Containers", "Linux / Bash Scripting", "SQL / PostgreSQL"]
+    items: ["Python (Advanced)", "C++", "AWS Cloud", "Docker / Containers", "Linux / Bash Scripting", "SQL / PostgreSQL"]
   }
 ];
 
@@ -157,11 +155,11 @@ const CERTIFICATES = [
 
 const EXPERIENCES = [
   {
-    role: "Cyber Threat Hunter",
-    company: "IPV7",
+    role: "Cyber Threat Hunter" ,
+    company: "IPV7 [BUG BOUNTY]",
     period: "Abr 2025 - Presente",
-    description: "Atuo de forma proativa na detecção e investigação de ameaças avançadas que possam escapar de mecanismos tradicionais de defesa. Utilizo técnicas de threat hunting, análise de comportamento, inteligência de ameaças (Threat Intelligence) entre outras técnicas para identificar atividades suspeitas e possíveis vulnerabilidades em sistemas, redes e aplicações.",
-    tech: ["Threat Hunting", "Threat Intel", "Forensics", "Python", "SecOps"]
+    description: "Atuo de forma proativa na detecção e investigação de vulnerabilidades/ameaças. Utilizo técnicas de threat hunting, bug hunting, inteligência de ameaças (Threat Intelligence) entre outras técnicas para identificar atividades suspeitas e possíveis vulnerabilidades em sistemas, redes e aplicações.",
+    tech: ["Threat Hunting", "Threat Intel", "Forensics", "Python", "SecOps", "Bug Bounty"]
   },
   {
     role: "Desenvolvedor de IA & ML",
@@ -416,12 +414,13 @@ const HomePage = ({ isGuiMode }) => {
                     <span className="text-cyber-accent text-4xl md:text-6xl font-bold tracking-tighter">{`#<$`}</span>
                 </div>
                 
-                {/* CORREÇÃO: Adicionado break-words e whitespace-pre-wrap para o texto não vazar no mobile */}
                 <div className="max-w-2xl mx-auto border-l-2 border-cyber-secondary/50 pl-6 ml-auto mr-auto space-y-3 text-lg text-gray-300 font-mono mt-12 relative text-left break-words whitespace-pre-wrap">
                     <div className="absolute top-0 left-[-2px] w-[2px] h-1/3 bg-cyber-accent shadow-[0_0_10px_#ff003c]"></div>
-                  <TypingEffect text="> Ciência Da Computação | Cybersecurity | Machine Learning/IA | Hacker Ético Certificado" delay={0.5} isGuiMode={isGuiMode} />
-                  <TypingEffect text="> Foco em operações Red Team/Blue Team, LLMs/Agentes de IA" delay={2.5} isGuiMode={isGuiMode} />
-                  <TypingEffect text="> Aqui você encontrará informações profissionais/técnicas, projetos e artigos" delay={4.5} isGuiMode={isGuiMode} />
+                  <div className="text-xs md:text-lg"> 
+                     <TypingEffect text="> Ciência Da Computação | Cybersecurity & IA | Hacker Ético Certificado." delay={0.5} isGuiMode={isGuiMode} />
+                     <TypingEffect text="> Foco em operações Red Team/Blue Team, LLMs/Agentes de IA." delay={2.5} isGuiMode={isGuiMode} />
+                     <TypingEffect text="> Aqui você encontrará informações profissionais/técnicas sobre mim, projetos e artigos." delay={4.5} isGuiMode={isGuiMode} />
+                  </div>
                 </div>
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 6 }} className="mt-12">
                     <a href="https://www.linkedin.com/in/matheus-henrique-ramos-siqueira-890052200/" target="_blank" className="inline-flex items-center gap-2 bg-cyber-secondary/10 border border-cyber-secondary text-cyber-secondary px-8 py-4 hover:bg-cyber-secondary hover:text-black hover:scale-105 transition-all duration-300 group">
@@ -434,7 +433,6 @@ const HomePage = ({ isGuiMode }) => {
             </section>
 
             <section className="mb-24">
-                {/* CORREÇÃO: Alterado layout para flex-col no mobile para evitar overflow do 'ALL SYSTEMS' */}
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                     <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                         <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00300000</span>
@@ -503,7 +501,7 @@ const HomePage = ({ isGuiMode }) => {
                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                 <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                   <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00402000</span>
-                  <FiDatabase className="text-cyber-accent" /> ./kern3l_modul3s.sh
+                  <FiDatabase className="text-cyber-accent" /> ./load_kernel_skills.sh
                 </h2>
                 <span className="text-xs text-cyber-secondary">ALL SYSTEMS OPERATIONAL</span>
               </div>
@@ -521,7 +519,7 @@ const HomePage = ({ isGuiMode }) => {
                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                 <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                   <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00403000</span>
-                  <FiAward className="text-cyber-accent" /> ./my_c3rts.py
+                  <FiAward className="text-cyber-accent" /> ./my_credentials_dump.py
                 </h2>
                 <span className="text-xs border border-cyber-secondary/50 px-2 py-1 text-cyber-secondary rounded">UID: 0 (ROOT)</span>
               </div>
@@ -613,6 +611,37 @@ const WriteupsPage = ({ posts, isGuiMode }) => {
 const ArticleReader = ({ posts }) => {
     const { id } = useParams();
     const post = posts.find(p => p.id === id);
+    const [metrics, setMetrics] = useState({ views: 0 });
+    
+    const viewRegistered = useRef(false);
+
+    useEffect(() => {
+        if (!post) return;
+
+        if (viewRegistered.current === id) return;
+
+        const registerView = async () => {
+            try {
+                await fetch('/api/view', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ slug: id })
+                });
+                viewRegistered.current = id; 
+            } catch (err) {
+                console.error("Erro ao registrar view:", err);
+            }
+        };
+
+        registerView();
+
+        // 2. Busca as métricas atuais
+        fetch(`/api/metrics/${id}`)
+            .then(res => res.json())
+            .then(data => setMetrics(data))
+            .catch(err => console.error("Erro ao buscar métricas:", err));
+            
+    }, [id, post]);
 
     if (!post) return <div className="text-center mt-20 text-red-500 font-mono">404: FILE NOT FOUND</div>;
 
@@ -634,8 +663,19 @@ const ArticleReader = ({ posts }) => {
                         ))}
                     </div>
                     <h1 className="text-2xl md:text-4xl font-bold font-mono text-white mb-4 leading-tight break-words">{post.title}</h1>
-                    <div className="flex items-center gap-2 text-sm text-gray-500 font-mono">
-                        <FiCalendar /> {post.date} <span className="mx-2">|</span> <FiUser /> Matheus Henrique
+                    
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono text-sm text-gray-500">
+                        <div className="flex items-center gap-2">
+                            <FiCalendar /> {post.date} <span className="mx-2">|</span> <FiUser /> Matheus Henrique
+                        </div>
+
+                      
+                        <div className="flex items-center gap-6 bg-gray-900/50 px-4 py-2 rounded border border-gray-800">
+                            <div className="flex items-center gap-2" title="Visualizações">
+                                <FiEye className="text-cyber-secondary" />
+                                <span className="text-white">{metrics.views}</span>
+                            </div>
+                        </div>
                     </div>
                 </header>
 
@@ -764,7 +804,9 @@ function App() {
             <div className="flex items-center gap-2 md:gap-4">
               <div className="flex items-center gap-2 text-cyber-secondary">
                 <FiTerminal className={`inline text-lg ${!isGuiMode && 'animate-pulse'}`} />
-                <span className="opacity-90 hidden md:inline">root@matheush:~/projects $</span>
+                <span className="opacity-80 hidden md:inline">
+                  <span className="text-red-500">root@matheush</span>:~/projects $
+                </span>
               </div>
               <nav className="flex gap-2 ml-2 md:gap-4 md:ml-4 font-bold">
                   <Link to="/" className="hover:text-cyber-accent transition-colors whitespace-nowrap">[HOME]</Link>
@@ -780,7 +822,7 @@ function App() {
               </div>
               <button 
                 onClick={() => setIsGuiMode(!isGuiMode)} 
-                className="border px-2 py-1 rounded hover:bg-cyber-secondary hover:text-black transition-all text-[10px] border-cyber-secondary text-cyber-secondary whitespace-nowrap"
+                className="border px-2 py-1 rounded hover:bg-cyber-secondary hover:text-black transition-all text-[8px] md:text-[10px] border-cyber-secondary text-cyber-secondary whitespace-nowrap"
               >
                 {isGuiMode ? "[ HACKER_MODE ]" : "[ STATIC_MODE ]"}
               </button>
