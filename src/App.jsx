@@ -155,29 +155,36 @@ const CERTIFICATES = [
   }
 ];
 
-// const EXPERIENCES = [
-//   {
-//     role: "Cyber Threat Hunter",
-//     company: "IPV7 (Freelance)",
-//     period: "Abr 2025 - Presente",
-//     description: "Atuação especializada em operações de Segurança Ofensiva, com foco primário em Bug Bounty e Pentesting. Condução de testes de intrusão em aplicações web, APIs e infraestruturas de rede para identificar vulnerabilidades críticas (OWASP Top 10). Pesquisa ativa de vetores de ataque, exploração de falhas de lógica de negócio e elaboração de relatórios técnicos com Provas de Conceito (PoC) para mitigação de riscos.",
-//     tech: ["Pentest", "Bug Bounty", "Burp Suite", "OWASP", "Vulnerability Research"]
-//   },
-//   {
-//     role: "Desenvolvedor de IA & ML",
-//     company: "Freelance",
-//     period: "Mar 2024 - Mai 2025",
-//     description: "Desenvolvimento end-to-end de soluções de Inteligência Artificial. Criação de Agentes Autônomos, modelos de Visão Computacional e algoritmos de Machine Learning para classificação e predição. Projetos focados em resolver problemas complexos com arquiteturas de Deep Learning modernas.",
-//     tech: ["Deep Learning", "Computer Vision", "AI Agents", "Python", "Data Science"]
-//   },
-//   {
-//     role: "Suporte Técnico N1 (Redes)",
-//     company: "Ibi - Internet Brasileira Incrível",
-//     period: "Out 2022 - Mar 2023",
-//     description: "Gestão de infraestrutura de redes ISP. Responsável pelo provisionamento lógico de rotas, configuração avançada de roteadores/CPEs e troubleshooting de protocolos de rede. Garantia da estabilidade do link e suporte técnico especializado na camada de infraestrutura.",
-//     tech: ["Network Infrastructure", "Routing Protocols", "ISP Ops", "Troubleshooting", "Hardware Config"]
-//   }
-// ];
+const EXPERIENCES = [
+  {
+    role: "Cyber Threat Hunter",
+    company: "IPV7",
+    period: "Abr 2025 - Presente",
+    description: "Atuo de forma proativa na detecção e investigação de ameaças avançadas que possam escapar de mecanismos tradicionais de defesa. Utilizo técnicas de threat hunting, análise de comportamento, inteligência de ameaças (Threat Intelligence) entre outras técnicas para identificar atividades suspeitas e possíveis vulnerabilidades em sistemas, redes e aplicações.",
+    tech: ["Threat Hunting", "Threat Intel", "Forensics", "Python", "SecOps"]
+  },
+  {
+    role: "Desenvolvedor de IA & ML",
+    company: "Freelance",
+    period: "Mar 2024 - Abr 2025",
+    description: "Desenvolvimento de soluções de Inteligência Artificial focadas em segurança e automação. Criação de modelos de predição, classificação e Agentes de IA (LLMs). Aplicação de Visão Computacional e Deep Learning para resolução de problemas complexos.",
+    tech: ["Deep Learning", "Machine Learning", "AI Agents", "Computer Vision", "Python"]
+  },
+  {
+    role: "Analista de Redes",
+    company: "ARC TECH",
+    period: "Mar 2023 - Fev 2024",
+    description: "Implantação e gerenciamento 'do 0' de infraestrutura de redes. Responsável pela configuração de Firewalls, VPNs, Switches e monitoramento de tráfego, garantindo disponibilidade, segurança e performance do ambiente corporativo.",
+    tech: ["Network Infra", "Firewall Mgmt", "VPN", "Routing", "Monitoring", "Security"]
+  },
+  {
+    role: "Suporte Técnico N1 (Redes)",
+    company: "Ibi - Internet Brasileira Incrível",
+    period: "Out 2022 - Mar 2023",
+    description: "Suporte especializado em infraestrutura ISP. Configuração de roteadores, provisionamento de rotas lógicas e troubleshooting de conectividade para garantia da estabilidade do serviço.",
+    tech: ["ISP Ops", "CPE Config", "Troubleshooting", "Networking"]
+  }
+];
 
 const SOCIAL_LINKS = [
     { name: "GitHub", url: "https://github.com/Makonmm?tab=repositories", icon: <FiGithub />, label: "Perfil no GitHub", color: "group-hover:text-white" },
@@ -412,7 +419,7 @@ const HomePage = ({ isGuiMode }) => {
                 {/* CORREÇÃO: Adicionado break-words e whitespace-pre-wrap para o texto não vazar no mobile */}
                 <div className="max-w-2xl mx-auto border-l-2 border-cyber-secondary/50 pl-6 ml-auto mr-auto space-y-3 text-lg text-gray-300 font-mono mt-12 relative text-left break-words whitespace-pre-wrap">
                     <div className="absolute top-0 left-[-2px] w-[2px] h-1/3 bg-cyber-accent shadow-[0_0_10px_#ff003c]"></div>
-                  <TypingEffect text="> Estudante De Ciência Da Computação | Bug Hunter | Hacker Ético Certificado" delay={0.5} isGuiMode={isGuiMode} />
+                  <TypingEffect text="> Ciência Da Computação | Cybersecurity | Machine Learning/IA | Hacker Ético Certificado" delay={0.5} isGuiMode={isGuiMode} />
                   <TypingEffect text="> Foco em operações Red Team/Blue Team, LLMs/Agentes de IA" delay={2.5} isGuiMode={isGuiMode} />
                   <TypingEffect text="> Aqui você encontrará informações profissionais/técnicas, projetos e artigos" delay={4.5} isGuiMode={isGuiMode} />
                 </div>
@@ -443,14 +450,14 @@ const HomePage = ({ isGuiMode }) => {
                 >
                     <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none"><FiActivity size={100} /></div>
                     <div className="space-y-4"> 
-                        <p><span className="text-cyber-accent font-bold">{`root@root:~$`}</span> Sou estudante de Ciência da Computação com foco em Cibersegurança (ofensiva e defensiva) e Inteligência Artificial aplicada. Tenho experiência em redes, testes de intrusão, análise de ameaças e desenvolvimento de projetos de IA/ML voltados à detecção de fraudes, tráfego malicioso e análise comportamental.</p>
+                        <p><span className="text-cyber-accent font-bold">{`root@root:~$`}</span> Graduando em Ciência da Computação com trajetória em Cibersegurança/Infraestrutura de redes e Inteligência Artificial Aplicada (Machine learning, Agentes de IA). Possuo experiência prática em redes, cibersegurança, desenvolvimento de projetos de IA/ML voltados à detecção de fraudes, tráfego malicioso, análise de ameaças, etc.</p>
                         <p>Entre meus projetos recentes, destaco o desenvolvimento de um <span className="text-white font-bold">Honeypot com Agente LLM</span> para análise de ataques em tempo real e modelos de Machine Learning para classificação de tráfego de rede e detecção de fraudes em cartões de crédito.</p>
                         <p>Participo ativamente de <span className="text-cyber-accent">CTFs, Bug Bounties e Threat Hunting</span>, aplicando continuamente meus conhecimentos em Segurança Ofensiva (Red Team), Defensiva (SIEM, EDR) e Forense Digital. Meu objetivo é aplicar conhecimento técnico em problemas reais, relevantes e de alto impacto.</p>
                     </div>
                 </motion.div>
             </section>
 
-            {/* <section className="mb-24">
+            <section className="mb-24">
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                     <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                         <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00350000</span>
@@ -471,7 +478,7 @@ const HomePage = ({ isGuiMode }) => {
                         </motion.div>
                     ))}
                 </div>
-            </section> */}
+            </section>
 
             <section className="mb-24">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 border-b border-cyber-secondary/30 pb-4 font-mono gap-2 md:gap-0">
@@ -757,7 +764,7 @@ function App() {
             <div className="flex items-center gap-2 md:gap-4">
               <div className="flex items-center gap-2 text-cyber-secondary">
                 <FiTerminal className={`inline text-lg ${!isGuiMode && 'animate-pulse'}`} />
-                <span className="opacity-80 hidden md:inline">root@matheush:~/projects $</span>
+                <span className="opacity-90 hidden md:inline">root@matheush:~/projects $</span>
               </div>
               <nav className="flex gap-2 ml-2 md:gap-4 md:ml-4 font-bold">
                   <Link to="/" className="hover:text-cyber-accent transition-colors whitespace-nowrap">[HOME]</Link>
