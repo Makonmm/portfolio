@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import matter from 'gray-matter';
@@ -8,7 +8,6 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-// 
 import { 
   FiTerminal, FiCpu, FiActivity, FiHardDrive, FiAward, FiCheckCircle, 
   FiShield, FiGithub, FiLinkedin, FiWifi, FiEye, FiDatabase, FiLock, 
@@ -104,12 +103,22 @@ const SKILL_CATEGORIES = [
 
 const CERTIFICATES = [
   {
+    name: "Certified Red Team Operations Management (CRTOM)",
+    issuer: "RED TEAM LEADERS",
+    date: "Dez 2025",
+    id: "CRTOM_ID_X92",
+    skills: ["Adversary Emulation", "C2 Governance", "TIBER-EU", "Risk Mgmt"],
+    icon: <FiLock />, 
+    image: "/images/crtom.PNG"
+  },
+  {
     name: "Certified Ethical Hacker (CEH)",
     issuer: "IBSEC",
     date: "Mar 2025 - Mar 2028",
     id: "CRED_ID: 2c683a1d0a307ad6",
-    skills: ["Pentest", "Network Analysis", "Exploitation", "Criptografia"],
-    icon: <FiShield />
+    skills: ["Pentest", "Network Analysis", "Exploitation", "Social Engineering", "OWASP", "Cybersecurity Tools"],
+    icon: <FiShield />,
+    image: "/images/ceh.PNG" 
   },
   {
     name: "Analista SOC (IC-SOC-380)",
@@ -117,7 +126,8 @@ const CERTIFICATES = [
     date: "Abr 2025 - Abr 2028",
     id: "CRED_ID: 2867162bfc8744c9",
     skills: ["SIEM", "IDS/IPS", "Incident Response", "Log Analysis"],
-    icon: <FiEye />
+    icon: <FiEye />,
+    image: "/images/soc.PNG"
   },
   {
     name: "AWS Cloud Practitioner Essentials",
@@ -125,7 +135,8 @@ const CERTIFICATES = [
     date: "Ago 2025",
     id: "MODULE_AWS_CLOUD",
     skills: ["IAM", "Cloud Security", "Machine Learning", "Deploy"],
-    icon: <FiAward />
+    icon: <FiAward />,
+    image: "/images/awsEssentials.PNG"
   },
   {
     name: "IBM AI Engineering",
@@ -133,7 +144,8 @@ const CERTIFICATES = [
     date: "Dez 2024",
     id: "MODULE_AI_ENG",
     skills: ["Deep Learning", "TensorFlow", "PyTorch", "LLM Arch"],
-    icon: <FiCpu />
+    icon: <FiCpu />,
+    image: "/images/ibm.PNG"
   },
   {
     name: "Desenvolvedor Python",
@@ -141,7 +153,8 @@ const CERTIFICATES = [
     date: "Mai 2024",
     id: "DEV_PYTHON_FULL",
     skills: ["API REST", "Docker", "SQL", "Backend"],
-    icon: <FiTerminal />
+    icon: <FiTerminal />,
+    image: "/images/pythonfs.PNG"
   },
   {
     name: "EFSET English Certificate (C1)",
@@ -149,7 +162,8 @@ const CERTIFICATES = [
     date: "Jan 2021",
     id: "LANG_PKG_EN_US",
     skills: ["Fluent English", "Advanced Reading"],
-    icon: <FiCheckCircle />
+    icon: <FiCheckCircle />,
+    image: "/images/efset.PNG"
   }
 ];
 
@@ -302,6 +316,57 @@ const ProjectCard = ({ project, index, isGuiMode }) => (
     </motion.div>
 );
 
+const Header = ({ isGuiMode, setIsGuiMode, metrics }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleScroll = (id) => {
+    if (location.pathname === '/') {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    } else {
+        navigate(`/#${id}`);
+    }
+  };
+
+  return (
+    <header className="fixed top-0 left-0 w-full bg-black/90 backdrop-blur border-b border-cyber-secondary/30 p-2 text-[10px] md:text-xs flex justify-between items-center z-50 font-mono shadow-[0_0_10px_rgba(0,255,65,0.1)]">
+        <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center gap-2 text-cyber-secondary">
+            <FiTerminal className={`inline text-lg ${!isGuiMode && 'animate-pulse'}`} />
+            <span className="opacity-90 hidden md:inline">
+              <span className="text-red-500">root@matheush</span>:~/portfolio $
+            </span>
+          </div>
+          
+          <nav className="flex gap-2 ml-2 md:gap-4 md:ml-4 font-bold">
+              <Link to="/" className="hover:text-cyber-accent transition-colors whitespace-nowrap">[HOME]</Link>
+              <button onClick={() => handleScroll('projects')} className="hover:text-cyber-accent transition-colors whitespace-nowrap text-left">[PROJECTS]</button>
+              <button onClick={() => handleScroll('certs')} className="hover:text-cyber-accent transition-colors whitespace-nowrap text-left">[CERTS]</button>
+              <button onClick={() => handleScroll('links')} className="hover:text-cyber-accent transition-colors whitespace-nowrap text-left">[LINKS]</button>
+              <Link to="/writeups" className="hover:text-cyber-accent transition-colors whitespace-nowrap">[WRITE-UPS]</Link>
+          </nav>
+        </div>
+
+        <div className="flex gap-2 md:gap-6 font-bold items-center text-cyber-secondary">
+          <div className="hidden md:flex gap-6">
+              <span className="flex items-center gap-2"><FiCpu /> CPU: {metrics.cpu}%</span>
+              <span className="flex items-center gap-2"><FiHardDrive /> RAM: {metrics.ram}GB</span>
+              <span className={`flex items-center gap-2 ${!isGuiMode && 'text-cyber-accent animate-pulse'}`}><FiActivity /> ONLINE</span>
+          </div>
+          <button 
+            onClick={() => setIsGuiMode(!isGuiMode)} 
+            className="border px-2 py-1 rounded hover:bg-cyber-secondary hover:text-black transition-all text-[8px] md:text-[10px] border-cyber-secondary text-cyber-secondary whitespace-nowrap"
+          >
+            {isGuiMode ? "[ HACKER_MODE ]" : "[ STATIC_MODE ]"}
+          </button>
+        </div>
+    </header>
+  );
+};
+
 const InteractiveTerminal = () => {
     const [input, setInput] = useState('');
     const [history, setHistory] = useState(['Digite "help" para ver os comandos disponíveis.']);
@@ -398,7 +463,63 @@ const InteractiveTerminal = () => {
     );
 };
 
+const CertModal = ({ cert, onClose }) => {
+  if (!cert) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 cursor-pointer"
+      >
+        <motion.div 
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()} 
+          className="relative max-w-4xl w-full bg-gray-900 border-2 border-cyber-accent p-2 shadow-[0_0_50px_rgba(0,255,65,0.2)]"
+        >
+          <div className="flex justify-between items-center bg-black/50 p-2 mb-2 border-b border-cyber-secondary/30 font-mono text-xs">
+            <span className="text-cyber-accent">IMG_VIEWER_V1.0 :: {cert.id}</span>
+            <button onClick={onClose} className="text-red-500 hover:text-white font-bold">[ X ] CLOSE</button>
+          </div>
+          <div className="relative overflow-hidden group flex justify-center bg-black">
+             <img 
+               src={cert.image} 
+               alt={cert.name} 
+               className="w-full h-auto max-h-[80vh] object-contain border border-gray-800" 
+             />
+             <div className="absolute inset-0 bg-scanline opacity-10 pointer-events-none"></div>
+          </div>
+          <div className="mt-4 flex justify-between items-center font-mono text-sm">
+             <h3 className="text-white font-bold">{cert.name}</h3>
+             <span className="text-cyber-secondary text-xs">{cert.date}</span>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
 const HomePage = ({ isGuiMode }) => {
+    const [selectedCert, setSelectedCert] = useState(null);
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.hash) {
+            const id = location.hash.replace('#', '');
+            const element = document.getElementById(id);
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
+    }, [location]);
+
     return (
         <div className="container mx-auto px-4 py-12 md:px-8 lg:px-16 flex-grow relative z-10">
             <section className="mb-24 pt-8 relative">
@@ -436,7 +557,7 @@ const HomePage = ({ isGuiMode }) => {
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                     <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                         <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00300000</span>
-                        <FiUser className="text-cyber-accent" /> cat about_me.txt
+                        <FiUser className="text-cyber-accent" /> [cat] about_me.txt
                     </h2>
                     <span className="text-xs text-cyber-secondary">READ PERMISSION ONLY</span>
                 </div>
@@ -456,29 +577,29 @@ const HomePage = ({ isGuiMode }) => {
             </section>
 
             <section className="mb-24">
-                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
-                    <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
-                        <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00350000</span>
-                        <FiActivity className="text-cyber-accent" /> tail -f career.log
-                    </h2>
-                    <span className="text-xs text-cyber-secondary">PROCESS MONITORING</span>
-                </div>
-                <div className="relative border-l-2 border-cyber-secondary/20 ml-3 md:ml-6 space-y-12">
-                    {EXPERIENCES.map((exp, index) => (
-                        <motion.div key={index} initial={!isGuiMode ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="relative pl-8 md:pl-12">
-                            <div className="absolute -left-[9px] top-0 w-4 h-4 bg-black border-2 border-cyber-accent rounded-full shadow-[0_0_10px_rgba(255,0,60,0.5)]"></div>
-                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                                <h3 className="text-xl font-bold text-white group-hover:text-cyber-accent transition-colors">{exp.role} <span className="text-cyber-secondary">@ {exp.company}</span></h3>
-                                <span className="text-xs font-mono text-gray-500 border border-cyber-secondary/30 px-2 py-1 rounded bg-black/50 mt-2 sm:mt-0 w-fit">{exp.period}</span>
-                            </div>
-                            <p className="text-gray-400 text-sm mb-4 font-mono leading-relaxed max-w-3xl">{exp.description}</p>
-                            <div className="flex flex-wrap gap-2">{exp.tech.map((t, i) => (<span key={i} className="text-[10px] text-cyber-accent border border-cyber-accent/20 px-2 py-0.5 rounded opacity-80">{t}</span>))}</div>
-                        </motion.div>
-                    ))}
-                </div>
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
+                <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
+                  <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00350000</span>
+                  <FiActivity className="text-cyber-accent" /> [tail -f] career.log
+                </h2>
+                <span className="text-xs text-cyber-secondary">PROCESS MONITORING</span>
+              </div>
+              <div className="relative border-l-2 border-cyber-secondary/20 ml-3 md:ml-6 space-y-12">
+                {EXPERIENCES.map((exp, index) => (
+                  <motion.div key={index} initial={!isGuiMode ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="relative pl-8 md:pl-12">
+                    <div className="absolute -left-[9px] top-0 w-4 h-4 bg-black border-2 border-cyber-accent rounded-full shadow-[0_0_10px_rgba(255,0,60,0.5)]"></div>
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                      <h3 className="text-xl font-bold text-white group-hover:text-cyber-accent transition-colors">{exp.role} <span className="text-cyber-secondary">@ {exp.company}</span></h3>
+                      <span className="text-xs font-mono text-gray-500 border border-cyber-secondary/30 px-2 py-1 rounded bg-black/50 mt-2 sm:mt-0 w-fit">{exp.period}</span>
+                    </div>
+                    <p className="text-gray-400 text-sm mb-4 font-mono leading-relaxed max-w-3xl">{exp.description}</p>
+                    <div className="flex flex-wrap gap-2">{exp.tech.map((t, i) => (<span key={i} className="text-[10px] text-cyber-accent border border-cyber-accent/20 px-2 py-0.5 rounded opacity-80">{t}</span>))}</div>
+                  </motion.div>
+                ))}
+              </div>
             </section>
 
-            <section className="mb-24">
+            <section id="projects" className="mb-24 scroll-mt-32">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 border-b border-cyber-secondary/30 pb-4 font-mono gap-2 md:gap-0">
                 <h2 className="text-3xl font-bold flex items-center gap-3 text-white">
                   <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00401000</span>
@@ -508,41 +629,58 @@ const HomePage = ({ isGuiMode }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {SKILL_CATEGORIES.map((cat, index) => (
                   <motion.div key={index} initial={!isGuiMode ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="bg-black/40 border border-cyber-secondary/30 p-6 hover:border-cyber-accent transition-colors group">
-                     <div className="flex items-center gap-3 mb-4 border-b border-cyber-secondary/20 pb-2"><span className="text-xl">{cat.icon}</span><h3 className="font-bold text-cyber-primary">{cat.title}</h3></div>
-                     <div className="grid grid-cols-1 gap-2">{cat.items.map((item, i) => (<div key={i} className="flex justify-between items-center text-xs md:text-sm font-mono text-gray-400 group-hover:text-gray-200"><span>{`> ${item}`}</span><span className="text-cyber-secondary/50 group-hover:text-cyber-accent">[LOADED]</span></div>))}</div>
+                      <div className="flex items-center gap-3 mb-4 border-b border-cyber-secondary/20 pb-2"><span className="text-xl">{cat.icon}</span><h3 className="font-bold text-cyber-primary">{cat.title}</h3></div>
+                      <div className="grid grid-cols-1 gap-2">{cat.items.map((item, i) => (<div key={i} className="flex justify-between items-center text-xs md:text-sm font-mono text-gray-400 group-hover:text-gray-200"><span>{`> ${item}`}</span><span className="text-cyber-secondary/50 group-hover:text-cyber-accent">[LOADED]</span></div>))}</div>
                   </motion.div>
                 ))}
               </div>
             </section>
 
-            <section className="mb-24">
+            <section id="certs" className="mb-24 scroll-mt-32">
                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                 <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                   <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00403000</span>
-                  <FiAward className="text-cyber-accent" /> ./my_credentials_dump.py
+                  <FiAward className="text-cyber-accent" /> ./certs_dump.py
                 </h2>
                 <span className="text-xs border border-cyber-secondary/50 px-2 py-1 text-cyber-secondary rounded">UID: 0 (ROOT)</span>
               </div>
               <div className="space-y-4">
                 {CERTIFICATES.map((cert, index) => (
-                  <motion.div key={index} initial={!isGuiMode ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="relative border-l-2 border-cyber-secondary/30 bg-gray-900/40 p-5 overflow-hidden group hover:border-cyber-accent transition-colors">
+                  <motion.div 
+                    key={index} 
+                    initial={!isGuiMode ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }} 
+                    whileInView={{ opacity: 1, x: 0 }} 
+                    viewport={{ once: true }} 
+                    transition={{ delay: index * 0.1 }} 
+                    onClick={() => setSelectedCert(cert)} 
+                    className="relative border-l-2 border-cyber-secondary/30 bg-gray-900/40 p-5 overflow-hidden group hover:border-cyber-accent transition-colors cursor-pointer"
+                  >
                     <div className="absolute inset-0 bg-gradient-to-r from-cyber-accent/10 to-transparent translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out"></div>
                     <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                       <div className="flex items-start gap-4">
                         <div className="mt-1 text-cyber-accent text-2xl drop-shadow-[0_0_5px_rgba(255,0,60,0.5)]">{cert.icon}</div>
-                        <div><h3 className="text-lg font-bold text-gray-100 group-hover:text-cyber-accent transition-colors">{cert.name}</h3><p className="text-sm text-cyber-secondary font-semibold">{cert.issuer}</p><div className="flex flex-wrap gap-2 mt-2">{cert.skills.map(skill => (<span key={skill} className="text-[10px] uppercase tracking-wider text-gray-400 bg-black/50 px-2 py-0.5 rounded border border-gray-800">{skill}</span>))}</div></div>
+                        <div>
+                            <h3 className="text-lg font-bold text-gray-100 group-hover:text-cyber-accent transition-colors flex items-center gap-2">
+                                {cert.name} <FiEye className="opacity-0 group-hover:opacity-100 transition-opacity text-xs" />
+                            </h3>
+                            <p className="text-sm text-cyber-secondary font-semibold">{cert.issuer}</p><div className="flex flex-wrap gap-2 mt-2">{cert.skills.map(skill => (<span key={skill} className="text-[10px] uppercase tracking-wider text-gray-400 bg-black/50 px-2 py-0.5 rounded border border-gray-800">{skill}</span>))}</div></div>
                       </div>
                       <div className="text-right md:text-right text-xs text-gray-500 font-mono w-full md:w-auto mt-2 md:mt-0 flex flex-col items-start md:items-end">
-                         <span className="block text-cyber-secondary mb-1">VALID: <span className="text-gray-300">{cert.date}</span></span>
+                         <span className="block text-cyber-secondary mb-1">[0N]: <span className="text-gray-300">{cert.date}</span></span>
                          <span className="block opacity-50 group-hover:opacity-100 transition-opacity font-mono text-[10px]">{cert.id}</span>
+                         <span className="text-[10px] text-cyber-accent mt-2 opacity-0 group-hover:opacity-100 transition-opacity">[ CLICK TO VIEW ]</span>
                       </div>
                     </div>
                   </motion.div>
                 ))}
               </div>
+
+              {selectedCert && (
+                  <CertModal cert={selectedCert} onClose={() => setSelectedCert(null)} />
+              )}
             </section>
 
-            <section className="mb-12">
+            <section id="links" className="mb-12 scroll-mt-32">
                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 border-b border-cyber-secondary/30 pb-2 font-mono gap-2 md:gap-0">
                 <h2 className="text-2xl font-bold flex items-center gap-2 text-gray-200">
                   <span className="text-gray-600 font-mono text-sm mr-2 hidden md:inline">0x00500000</span>
@@ -553,11 +691,11 @@ const HomePage = ({ isGuiMode }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {SOCIAL_LINKS.map((link, index) => (
                   <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center justify-center p-6 bg-black/40 border border-cyber-secondary/30 hover:bg-cyber-secondary/5 hover:border-cyber-accent transition-all duration-300 relative overflow-hidden">
-                     <div className={`text-4xl mb-3 text-gray-400 ${link.color} transition-colors`}>{link.icon}</div>
-                     <h3 className="font-bold text-gray-200 group-hover:text-white mb-1">{link.name}</h3>
-                     <span className="text-[10px] text-cyber-secondary font-mono tracking-widest opacity-70 group-hover:opacity-100">{link.label}</span>
-                     <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyber-secondary/50 group-hover:border-cyber-accent"></div>
-                     <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyber-secondary/50 group-hover:border-cyber-accent"></div>
+                      <div className={`text-4xl mb-3 text-gray-400 ${link.color} transition-colors`}>{link.icon}</div>
+                      <h3 className="font-bold text-gray-200 group-hover:text-white mb-1">{link.name}</h3>
+                      <span className="text-[10px] text-cyber-secondary font-mono tracking-widest opacity-70 group-hover:opacity-100">{link.label}</span>
+                      <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyber-secondary/50 group-hover:border-cyber-accent"></div>
+                      <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyber-secondary/50 group-hover:border-cyber-accent"></div>
                   </a>
                 ))}
               </div>
@@ -617,7 +755,6 @@ const ArticleReader = ({ posts }) => {
 
     useEffect(() => {
         if (!post) return;
-
         if (viewRegistered.current === id) return;
 
         const registerView = async () => {
@@ -635,7 +772,6 @@ const ArticleReader = ({ posts }) => {
 
         registerView();
 
-        // 2. Busca as métricas atuais
         fetch(`/api/metrics/${id}`)
             .then(res => res.json())
             .then(data => setMetrics(data))
@@ -669,7 +805,6 @@ const ArticleReader = ({ posts }) => {
                             <FiCalendar /> {post.date} <span className="mx-2">|</span> <FiUser /> Matheus Henrique
                         </div>
 
-                      
                         <div className="flex items-center gap-6 bg-gray-900/50 px-4 py-2 rounded border border-gray-800">
                             <div className="flex items-center gap-2" title="Visualizações">
                                 <FiEye className="text-cyber-secondary" />
@@ -800,40 +935,15 @@ function App() {
             </>
           )}
 
-          <header className="sticky top-0 bg-black/90 backdrop-blur border-b border-cyber-secondary/30 p-2 text-[10px] md:text-xs flex justify-between items-center z-50 font-mono shadow-[0_0_10px_rgba(0,255,65,0.1)]">
-            <div className="flex items-center gap-2 md:gap-4">
-              <div className="flex items-center gap-2 text-cyber-secondary">
-                <FiTerminal className={`inline text-lg ${!isGuiMode && 'animate-pulse'}`} />
-                <span className="opacity-80 hidden md:inline">
-                  <span className="text-red-500">root@matheush</span>:~/projects $
-                </span>
-              </div>
-              <nav className="flex gap-2 ml-2 md:gap-4 md:ml-4 font-bold">
-                  <Link to="/" className="hover:text-cyber-accent transition-colors whitespace-nowrap">[HOME]</Link>
-                  <Link to="/writeups" className="hover:text-cyber-accent transition-colors whitespace-nowrap">[WRITE-UPS]</Link>
-              </nav>
-            </div>
+          <Header isGuiMode={isGuiMode} setIsGuiMode={setIsGuiMode} metrics={metrics} />
 
-            <div className="flex gap-2 md:gap-6 font-bold items-center text-cyber-secondary">
-              <div className="hidden md:flex gap-6">
-                  <span className="flex items-center gap-2"><FiCpu /> CPU: {metrics.cpu}%</span>
-                  <span className="flex items-center gap-2"><FiHardDrive /> RAM: {metrics.ram}GB</span>
-                  <span className={`flex items-center gap-2 ${!isGuiMode && 'text-cyber-accent animate-pulse'}`}><FiActivity /> ONLINE</span>
-              </div>
-              <button 
-                onClick={() => setIsGuiMode(!isGuiMode)} 
-                className="border px-2 py-1 rounded hover:bg-cyber-secondary hover:text-black transition-all text-[8px] md:text-[10px] border-cyber-secondary text-cyber-secondary whitespace-nowrap"
-              >
-                {isGuiMode ? "[ HACKER_MODE ]" : "[ STATIC_MODE ]"}
-              </button>
-            </div>
-          </header>
-
-          <Routes>
-              <Route path="/" element={<HomePage isGuiMode={isGuiMode} />} />
-              <Route path="/writeups" element={<WriteupsPage posts={posts} isGuiMode={isGuiMode} />} />
-              <Route path="/writeups/:id" element={<ArticleReader posts={posts} />} />
-          </Routes>
+          <main className="pt-24 flex-grow w-full">
+            <Routes>
+                <Route path="/" element={<HomePage isGuiMode={isGuiMode} />} />
+                <Route path="/writeups" element={<WriteupsPage posts={posts} isGuiMode={isGuiMode} />} />
+                <Route path="/writeups/:id" element={<ArticleReader posts={posts} />} />
+            </Routes>
+          </main>
 
           <InteractiveTerminal />
 
@@ -842,7 +952,7 @@ function App() {
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="text-cyber-secondary text-xs font-mono text-center md:text-left">
                         <p className="flex items-center gap-2"><span className={`w-2 h-2 rounded-full ${isGuiMode ? 'bg-green-500' : 'bg-red-500 animate-pulse'}`}></span> SYSTEM STATUS: STABLE</p>
-                        <p className="opacity-50 mt-1">Encrypted Connection (TLS 1.3) | {new Date().getFullYear()}</p>
+                        <p className="opacity-80 mt-1">Encrypted Connection | QUANTUM RESISTENCE | {new Date().getFullYear()}</p>
                     </div>
                     <div className="flex gap-6">
                         <a href="https://github.com/Makonmm?tab=repositories" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
