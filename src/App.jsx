@@ -190,7 +190,7 @@ const EXPERIENCES = [
     tech: ["Network Infra", "Firewall Mgmt", "VPN", "Routing", "Monitoring", "Security"]
   },
   {
-    role: "Suporte Técnico N1 (Redes)",
+    role: "Suporte Técnico (Redes)",
     company: "Ibi - Internet Brasileira Incrível",
     period: "Out 2022 - Mar 2023",
     description: "Suporte especializado em infraestrutura ISP. Configuração de roteadores, provisionamento de rotas lógicas e troubleshooting de conectividade para garantia da estabilidade do serviço.",
