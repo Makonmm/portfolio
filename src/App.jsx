@@ -11,7 +11,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { 
   FiTerminal, FiCpu, FiActivity, FiHardDrive, FiAward, FiCheckCircle, 
   FiShield, FiGithub, FiLinkedin, FiWifi, FiEye, FiDatabase, FiLock, 
-  FiCode, FiUser, FiLink, FiFileText, FiArrowLeft, FiCalendar, FiX 
+  FiCode, FiUser, FiLink, FiFileText, FiArrowLeft, FiCalendar, FiX, FiCloud 
 } from 'react-icons/fi';
 import { SiHackerrank, SiTryhackme } from 'react-icons/si';
 
@@ -36,10 +36,10 @@ const PROJECTS = [
   },
   {
     id: "PID_C2_RAT",
-    title: "Remote Control (C2) RAT",
-    description: "Desenvolvimento de infraestrutura de Comando e Controle (C2). Permite administração remota via shell, transferência de arquivos, captura de webcam e keylogging. Focado em simulações Red Team.",
-    tags: ["Socket TCP/IP", "C2 Arch", "Spyware", "Red Team"],
-    type: "MALWARE DEV"
+    title: "Remote Control (C2)",
+    description: "Desenvolvimento de infraestrutura de Comando e Controle (C2). Permite administração remota via shell, transferência de arquivos, captura de webcam e keylogging. Focado em simulações e estudo Red Team.",
+    tags: ["Socket TCP/IP", "C2 Arch", "Spyware", "Red Team OPs"],
+    type: "OFFSEC TOOL"
   },
   {
     id: "PID_NET_CLF",
@@ -65,7 +65,7 @@ const PROJECTS = [
   {
     id: "PID_CPP_SIGN",
     title: "Digital Sign Classificator",
-    description: "Classificador desenvolvido do zero em C++ para validação de certificados e assinaturas digitais. Foco em alta performance e eficiência de memória.",
+    description: "Classificador desenvolvido do zero em C++ para validação de certificados e assinaturas digitais. Foco em alta performance, segurança e eficiência de memória.",
     tags: ["C++", "Machine Learning", "Cryptography"],
     type: "LOW LEVEL"
   },
@@ -102,12 +102,23 @@ const SKILL_CATEGORIES = [
 ];
 
 const CERTIFICATES = [
+
+  {
+    name: "Cloud Security Professional",
+    issuer: "IBSEC",
+    date: "Jan 2026",
+    id: "CRED_ID: 9429d74da3eac959", 
+    skills: ["Cloud Arch (IaaS/PaaS/SaaS)", "IAM & OAuth", "CSA Controls", "STRIDE", "BCDR"],
+    icon: <FiCloud />, 
+    image: "/images/cloud_ibsec.PNG" 
+  },
+  
   {
     name: "Certified Red Team Operations Management (CRTOM)",
     issuer: "RED TEAM LEADERS",
     date: "Dez 2025",
     id: "CRTOM_ID_X92",
-    skills: ["Adversary Emulation", "C2 Governance", "TIBER-EU", "Risk Mgmt"],
+    skills: ["Adversary Emulation", "C2 Governance", "TIBER-EU", "Risk Mgmt", "Red Team"],
     icon: <FiLock />, 
     image: "/images/crtom.PNG"
   },
@@ -152,7 +163,7 @@ const CERTIFICATES = [
     issuer: "EBAC",
     date: "Mai 2024",
     id: "DEV_PYTHON_FULL",
-    skills: ["API REST", "Docker", "SQL", "Backend"],
+    skills: ["Python", "API REST", "Docker", "SQL", "Backend"],
     icon: <FiTerminal />,
     image: "/images/pythonfs.PNG"
   },
