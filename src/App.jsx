@@ -743,11 +743,11 @@ const WriteupsPage = ({ posts, isGuiMode }) => {
                         <div className="col-span-2 text-xs text-gray-500 group-hover:text-cyber-secondary">-rwxr-xr-x</div>
                         <div className="col-span-2 text-xs text-gray-400">{post.date}</div>
                         <div className="col-span-6 font-bold text-white group-hover:text-cyber-primary">{post.title}</div>
-                        <div className="col-span-2 flex gap-2 overflow-hidden">
-                            {post.tags && post.tags.slice(0, 2).map(tag => (
-                                <span key={tag} className="text-[10px] bg-gray-800 px-1 rounded text-gray-300 whitespace-nowrap">{tag}</span>
-                            ))}
-                        </div>
+                        <div className="col-span-2 flex gap-2 flex-wrap no-scrollbar"> {/* Mudei overflow-hidden para overflow-x-auto */}
+    {post.tags && post.tags.map(tag => ( // <--- Removi o .slice(0, 2)
+        <span key={tag} className="text-[10px] bg-gray-800 px-1 rounded text-gray-300 whitespace-nowrap">{tag}</span>
+    ))}
+</div>
                     </Link>
                 )) : (
                     <div className="text-gray-500 font-mono p-4">./writeups: directory is empty</div>
@@ -862,7 +862,7 @@ const ArticleReader = ({ posts }) => {
                                         </SyntaxHighlighter>
                                     </div>
                                 ) : (
-                                    <code className="bg-gray-800 text-cyber-secondary px-1.5 py-0.5 rounded font-mono text-sm border border-gray-700 mx-1 break-all" {...props}>
+                                    <code className="bg-gray-800 text-cyber-secondary px-1.5 py-0.5 rounded font-mono text-sm border border-gray-700 mx-1 break-words" {...props}>
                                         {children}
                                     </code>
                                 )
