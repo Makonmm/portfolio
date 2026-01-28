@@ -29,7 +29,7 @@ const PROJECTS = [
     tags: ["Elastic Stack", "Docker", "Llama 3.3", "Suricata/Zeek", "Streamlit"],
     type: "BLUE TEAM + AI"
   },
-  
+
   {
     id: "PID_SEC_POT",
     title: "AI SecPot (AWS + LLM)",
@@ -102,7 +102,7 @@ const SKILL_CATEGORIES = [
   {
     title: "ARTIFICIAL INTELLIGENCE",
     icon: <FiCpu className="text-purple-500" />,
-    items: ["LLM Agents (LangChain & StrandsAgents)", "PyTorch & TensorFlow", "Computer Vision (CNNs)", "Scikit-Learn / Pandas", "Deep Learning", "Data Analysis"]
+    items: ["LLM Agents (LangChain & StrandsAgents)", "PyTorch & TensorFlow", "Computer Vision (CNNs)", "Machine Learning/Deep Learning"]
   },
   {
     title: "DEV & CLOUD OPS",
