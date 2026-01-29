@@ -195,15 +195,15 @@ const EXPERIENCES = [
     tech: ["Threat Hunting", "Threat Intel", "Forensics", "Python", "SecOps", "Bug Bounty"]
   },
   {
-    role: "Desenvolvedor de IA & ML",
-    company: "Freelance",
+    role: "Desenvolvedor (IA & ML)",
+    company: "ARC TECH BRASIL",
     period: "Mar 2024 - Abr 2025",
-    description: "Desenvolvimento de soluções de Inteligência Artificial focadas em segurança e automação. Criação de modelos de predição, classificação e Agentes de IA (LLMs). Aplicação de Visão Computacional e Deep Learning para resolução de problemas complexos.",
+    description: " Desenvolvimento de projetos com foco em Machine Learning/Agentes de IA. Criei um Chatbot corporativo treinado na base de dados da empresa que responde 80% das dúvidas técnicas.",
     tech: ["Deep Learning", "Machine Learning", "AI Agents", "Computer Vision", "Python"]
   },
   {
-    role: "Analista de Redes",
-    company: "ARC TECH",
+    role: "Analista De Infraestrutura (Redes)",
+    company: "ARC TECH BRASIL",
     period: "Mar 2023 - Fev 2024",
     description: "Implantação e gerenciamento 'do 0' de infraestrutura de redes. Responsável pela configuração de Firewalls, VPNs, Switches e monitoramento de tráfego, garantindo disponibilidade, segurança e performance do ambiente corporativo.",
     tech: ["Network Infra", "Firewall Mgmt", "VPN", "Routing", "Monitoring", "Security"]
