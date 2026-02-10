@@ -202,7 +202,7 @@ const EXPERIENCES = [
     tech: ["Deep Learning", "Machine Learning", "AI Agents", "Computer Vision", "Python"]
   },
   {
-    role: "Analista De Infraestrutura (Redes)",
+    role: "Suporte Técnico de Infraestrutura (Redes)",
     company: "ARC TECH BRASIL",
     period: "Mar 2023 - Fev 2024",
     description: "Implantação e gerenciamento 'do 0' de infraestrutura de redes. Responsável pela configuração de Firewalls, VPNs, Switches e monitoramento de tráfego, garantindo disponibilidade, segurança e performance do ambiente corporativo.",
