@@ -557,8 +557,7 @@ const HomePage = ({ isGuiMode }) => {
                 <div className="max-w-2xl mx-auto border-l-2 border-cyber-secondary/50 pl-6 ml-auto mr-auto space-y-3 text-lg text-gray-300 font-mono mt-12 relative text-left break-words whitespace-pre-wrap">
                     <div className="absolute top-0 left-[-2px] w-[2px] h-1/3 bg-cyber-accent shadow-[0_0_10px_#ff003c]"></div>
                   <div className="text-xs md:text-lg"> 
-                     <TypingEffect text="> Ciência Da Computação | Cybersecurity & IA | Hacker Ético Certificado." delay={0.5} isGuiMode={isGuiMode} />
-                     <TypingEffect text="> Foco em operações Red Team/Blue Team, LLMs/Agentes de IA." delay={2.5} isGuiMode={isGuiMode} />
+                     <TypingEffect text="> Ciência Da Computação | Cybersecurity & IA" delay={0.5} isGuiMode={isGuiMode} />
                      <TypingEffect text="> Aqui você encontrará informações profissionais/técnicas sobre mim, projetos e artigos." delay={4.5} isGuiMode={isGuiMode} />
                   </div>
                 </div>
