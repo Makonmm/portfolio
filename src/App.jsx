@@ -40,7 +40,7 @@ const SKILL_CATEGORIES = [
 ];
 
 const CERTIFICATES = [
-  { name: "Professional Cloud Security (CPCS)", issuer: "IBSEC", date: "Jan 2026", id: "cpcs-2026", skills: ["Cloud Arch", "IAM", "STRIDE"], icon: <FiCloud />, image: "/images/cpcs_ibsec.jpg" },
+  { name: "Professional Cloud Security (CPCS)", issuer: "IBSEC", date: "Jan 2026", id: "cpcs-2026", skills: ["Cloud Arch", "IAM", "STRIDE"], icon: <FiCloud />, image: "/images/cloud_ibsec.PNG" },
   { name: "Red Team Operations (CRTOM)", issuer: "RED TEAM LEADERS", date: "Dez 2025", id: "crtom-x92", skills: ["Adversary Emulation", "C2 Governance"], icon: <FiLock />, image: "/images/crtom.PNG" },
   { name: "Certified Ethical Hacker (CEH)", issuer: "IBSEC", date: "Mar 2025", id: "ceh-2025", skills: ["Pentest", "Exploitation"], icon: <FiShield />, image: "/images/ceh.PNG" },
   { name: "Analista SOC (IC-SOC-380)", issuer: "IBSEC", date: "Abr 2025", id: "soc-380", skills: ["SIEM", "Incident Response"], icon: <FiEye />, image: "/images/soc.PNG" },
