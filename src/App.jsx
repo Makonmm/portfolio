@@ -293,13 +293,13 @@ const HomePage = () => {
                     className="bg-zinc-900/30 border border-white/5 rounded-xl p-8 text-zinc-300 leading-relaxed space-y-4"
                 >
                     <p>
-                        Graduando em Ciência da Computação com foco em Segurança da Informação, Inteligência Artificial aplicada e Engenharia de Sistemas. Minha trajetória combina Cibersegurança, Infraestrutura de Redes e desenvolvimento de soluções baseadas em Machine Learning e Agentes de IA voltados para análise de ameaças.
+                        Graduando em Ciência da Computação com conhecimentos em Segurança da Informação/Redes, Inteligência Artificial aplicada e Desenvolvimento. Minha trajetória combina Cibersegurança, Infraestrutura de Redes e Desenvolvimento de soluções baseadas em Machine Learning e Agentes de IA.
                     </p>
                     <p>
                         Possuo conhecimento prático em segurança ofensiva e defensiva, análise de vulnerabilidades, monitoramento de eventos e desenvolvimento de modelos de IA/Agentes.
                     </p>
                     <p>
-                        Participo ativamente de atividades práticas como CTFs, Bug Bounty e Threat Hunting, mantendo aprendizado contínuo na arquitetura de software seguro e proteção de dados.
+                        Participo ativamente de atividades práticas como CTFs, Bug Bounty e Threat Hunting, etc, mantendo aprendizado contínuo nas minhas áreas de interesse.
                     </p>
                 </motion.div>
             </section>
