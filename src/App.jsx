@@ -168,7 +168,6 @@ const Header = () => {
     <header className="fixed top-0 left-0 w-full bg-black/60 backdrop-blur-md border-b border-white/5 p-4 text-sm flex justify-between items-center z-50 font-mono">
         <div className="flex items-center gap-6 max-w-6xl mx-auto w-full">
           <Link to="/" className="text-zinc-100 font-medium flex items-center gap-2 hover:text-white transition-colors">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             [matheush.sys]
           </Link>
           
