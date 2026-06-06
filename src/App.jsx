@@ -166,7 +166,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 w-full bg-black/60 backdrop-blur-md border-b border-white/5 p-4 text-sm flex justify-between items-center z-50 font-mono">
         <div className="flex items-center gap-6 max-w-6xl mx-auto w-full">
           <Link to="/" className="text-zinc-100 font-medium flex items-center gap-2 hover:text-white transition-colors">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+      
             [matheush.sys]
           </Link>
           
@@ -293,14 +293,9 @@ const HomePage = () => {
                     className="bg-zinc-900/30 border border-white/5 rounded-xl p-8 text-zinc-300 leading-relaxed space-y-4"
                 >
                     <p>
-                        Graduando em Ciência da Computação com conhecimentos em Segurança da Informação/Redes, Inteligência Artificial aplicada e Desenvolvimento. Minha trajetória combina Cibersegurança, Infraestrutura de Redes e Desenvolvimento de soluções baseadas em Machine Learning e Agentes de IA.
+                        Atualmente sou graduando em Ciência da Computação, tenho interesse por áreas como: IA, Cibersegurança, Teoria da computação. 
                     </p>
-                    <p>
-                        Possuo conhecimento prático em segurança ofensiva e defensiva, análise de vulnerabilidades, monitoramento de eventos e desenvolvimento de modelos de IA/Agentes.
-                    </p>
-                    <p>
-                        Participo ativamente de atividades práticas como CTFs, Bug Bounty e Threat Hunting, etc, mantendo aprendizado contínuo nas minhas áreas de interesse.
-                    </p>
+                  
                 </motion.div>
             </section>
 
