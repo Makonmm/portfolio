@@ -49,6 +49,8 @@ const CERTIFICATES = [
 ];
 
 const EXPERIENCES = [
+  { role: "Estagiário em Automação (Python)", company: "Data Opportunity", period: "Jun 2026 - Presente", description: "Automação robótica de processos (RPA) em ambiente remoto, com aplicação de habilidades analíticas.", tech: ["Python", "RPA", "Automação"] },
+  { role: "Estagiário de TI", company: "Sitcon Tecnologia da Informação", period: "Mai 2026 - Jun 2026", description: "Atuação presencial em suporte técnico, manutenção e administração de banco de dados.", tech: ["Suporte Técnico", "Banco de Dados", "TI"] },
   { role: "Cyber Threat Hunter", company: "IPV7 [HuntersPay]", period: "Abr 2025 - Presente", description: "Detecção e investigação proativa de vulnerabilidades e ameaças utilizando Threat Hunting e Bug Bounty em redes e aplicações. Atingindo o TOP 1 no Ranking de reports de vulnerabilidades na plataforma.", tech: ["Threat Hunting", "Forensics", "Python", "Bug Bounty"] },
   { role: "Desenvolvedor (IA)", company: "ARC TECH BRASIL", period: "Mar 2024 - Abr 2025", description: "Desenvolvimento de projetos com foco em Machine Learning e Agentes de IA. Criação de Chatbot corporativo RAG.", tech: ["Deep Learning", "AI Agents", "Python"] },
   { role: "Suporte de Infraestrutura", company: "ARC TECH BRASIL", period: "Mar 2023 - Fev 2024", description: "Implantação e gerenciamento de infraestrutura de redes. Configuração de Firewalls, VPNs e monitoramento de tráfego.", tech: ["Network Infra", "Firewall", "VPN", "Security"] },
@@ -166,7 +168,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 w-full bg-black/60 backdrop-blur-md border-b border-white/5 p-4 text-sm flex justify-between items-center z-50 font-mono">
         <div className="flex items-center gap-6 max-w-6xl mx-auto w-full">
           <Link to="/" className="text-zinc-100 font-medium flex items-center gap-2 hover:text-white transition-colors">
-      
+            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             [matheush.sys]
           </Link>
           
@@ -432,6 +434,7 @@ const WriteupsPage = ({ posts }) => (
         </div>
     </div>
 );
+
 const ArticleReader = ({ posts }) => {
     const { id } = useParams();
     const post = posts.find(p => p.id === id);
