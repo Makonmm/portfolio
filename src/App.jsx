@@ -294,7 +294,7 @@ const HomePage = () => {
                     className="bg-zinc-900/30 border border-white/5 rounded-xl p-8 text-zinc-300 leading-relaxed space-y-4"
                 >
                     <p>
-                        Atualmente sou graduando em Ciência da Computação, tenho interesse por áreas como: IA, Cibersegurança, Teoria da computação. 
+                        Atualmente sou graduando em Ciência da Computação e faço estágio na área de automação de processos (RPA. Tenho interesse por áreas como: IA, Cibersegurança, Teoria da computação. 
                     </p>
                   
                 </motion.div>
