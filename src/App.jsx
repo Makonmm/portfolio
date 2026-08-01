@@ -294,7 +294,7 @@ const HomePage = () => {
                     className="bg-zinc-900/30 border border-white/5 rounded-xl p-8 text-zinc-300 leading-relaxed space-y-4"
                 >
                     <p>
-                        Atualmente sou graduando em Ciência da Computação e faço estágio na área de automação de processos (RPA). Tenho interesse e experiência prática em IA, RPA e Cibersegurança. Atualmente estou nos melhores 2% do ranking do TryHackMe, já alcancei o top 1 de uma plataforma privada de Bug Bounty também. 
+                        Estou graduando em Ciência da Computação e faço estágio na área de automação de processos (RPA). Tenho interesse e experiência prática em IA, RPA e Cibersegurança. Atualmente estou nos melhores 2% do ranking do TryHackMe e também já alcancei o top 1 de uma plataforma privada de Bug Bounty. 
                     </p>
                   
                 </motion.div>
